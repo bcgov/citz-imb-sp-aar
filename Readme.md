@@ -13,3 +13,4 @@ Database Server
 - nodemon index
 
 Client
+- npm start
