@@ -14,3 +14,6 @@ Database Server
 
 Client
 - npm start
+
+
+works with client in openshift, server and database local
