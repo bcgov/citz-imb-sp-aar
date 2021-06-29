@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const clusterUrl = 'http://10.217.5.231'
+const clusterUrl = 'http://back-end-pern-stack.apps-crc.testing'
 
 export const EditTodo = ({ todo }) => {
 	const [description, setDescription] = useState(todo.description)

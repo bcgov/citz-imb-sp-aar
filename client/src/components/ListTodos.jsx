@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {EditTodo} from './EditTodo'
 
-const clusterUrl = 'http://10.217.5.231'
+const clusterUrl = 'http://back-end-pern-stack.apps-crc.testing'
 
 export const ListTodos = () => {
 	const [todos, setTodos] = useState([])
