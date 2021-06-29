@@ -12,6 +12,7 @@ export const InputTodo = () => {
 		try {
 			const body = { description }
 			await fetch(`${clusterUrl}/todos`, {
+				mode: 'cors',
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify(body),

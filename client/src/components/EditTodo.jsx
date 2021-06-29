@@ -13,6 +13,7 @@ export const EditTodo = ({ todo }) => {
 			const response = await fetch(
 				`${clusterUrl}/todos/${todo.todo_id}`,
 				{
+					mode: 'cors',
 					method: 'PUT',
 					headers: { 'Content-Type': 'application/json' },
 					body: JSON.stringify(body),

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {EditTodo} from './EditTodo'
+import { EditTodo } from './EditTodo'
 
 const clusterUrl = 'http://back-end-pern-stack.apps-crc.testing'
 // const clusterUrl = 'http://localhost:5000'
@@ -9,7 +9,7 @@ export const ListTodos = () => {
 
 	const getTodos = async () => {
 		try {
-			const response = await fetch(`${clusterUrl}/todos`)
+			const response = await fetch(`${clusterUrl}/todos`, { mode: 'cors' })
 			const jsonData = await response.json()
 
 			setTodos(jsonData)
@@ -21,6 +21,7 @@ export const ListTodos = () => {
 	const deleteTodo = async (todo_id) => {
 		try {
 			await fetch(`${clusterUrl}/todos/${todo_id}`, {
+				mode: 'cors',
 				method: 'DELETE',
 			})
 			await getTodos()
@@ -47,7 +48,9 @@ export const ListTodos = () => {
 					return (
 						<tr key={todo.todo_id}>
 							<td>{todo.description}</td>
-							<td><EditTodo todo={todo} /></td>
+							<td>
+								<EditTodo todo={todo} />
+							</td>
 							<td>
 								<button
 									className='btn btn-danger'
@@ -55,7 +58,6 @@ export const ListTodos = () => {
 									Delete
 								</button>
 							</td>
-
 						</tr>
 					)
 				})}
