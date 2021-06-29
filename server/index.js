@@ -8,8 +8,8 @@ app.use(cors());
 app.use(express.json());
 
 const corsOptions = {
-	origin: 'http://front-end-pern-stack.apps-crc.testing',
-	optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+	// origin: 'http://front-end-pern-stack.apps-crc.testing',
+	// optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
 
@@ -35,7 +35,7 @@ app.get('/todos', async (req, res) => {
 	console.log('getting todos...')
 	try {
 		const allTodos = await pool.query('SELECT * FROM todo')
-		console.log(`res`, res)
+		console.log(`allTodos`, allTodos)
 		res.json(allTodos.rows)
 	} catch (error) {
 		console.error(error.message)
@@ -81,6 +81,6 @@ app.delete('/todos/:id',cors(corsOptions), async (req, res) => {
 	}
 })
 
-app.listen(8080, () => {
-	console.log('server has started on port 8080');
+app.listen(5000, () => {
+	console.log('server has started on port 5000');
 });
