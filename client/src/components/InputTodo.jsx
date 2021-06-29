@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 
+const clusterUrl = 'http://10.217.5.231'
+
 export const InputTodo = () => {
 	const [description, setDescription] = useState('')
 
@@ -8,7 +10,7 @@ export const InputTodo = () => {
 
 		try {
 			const body = { description }
-			await fetch('http://localhost:5000/todos', {
+			await fetch(`${clusterUrl}/todos`, {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify(body),

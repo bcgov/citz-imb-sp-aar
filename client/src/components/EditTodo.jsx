@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 
+const clusterUrl = 'http://10.217.5.231'
+
 export const EditTodo = ({ todo }) => {
 	const [description, setDescription] = useState(todo.description)
 
@@ -8,7 +10,7 @@ export const EditTodo = ({ todo }) => {
 		try {
 			const body = { description }
 			const response = await fetch(
-				`http://localhost:5000/todos/${todo.todo_id}`,
+				`${clusterUrl}/todos/${todo.todo_id}`,
 				{
 					method: 'PUT',
 					headers: { 'Content-Type': 'application/json' },

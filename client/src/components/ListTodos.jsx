@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import {EditTodo} from './EditTodo'
 
+const clusterUrl = 'http://10.217.5.231'
+
 export const ListTodos = () => {
 	const [todos, setTodos] = useState([])
 
 	const getTodos = async () => {
 		try {
-			const response = await fetch('http://localhost:5000/todos')
+			const response = await fetch(`${clusterUrl}/todos`)
 			const jsonData = await response.json()
 
 			setTodos(jsonData)
@@ -17,7 +19,7 @@ export const ListTodos = () => {
 
 	const deleteTodo = async (todo_id) => {
 		try {
-			await fetch(`http://localhost:5000/todos/${todo_id}`, {
+			await fetch(`${clusterUrl}/todos/${todo_id}`, {
 				method: 'DELETE',
 			})
 			await getTodos()
