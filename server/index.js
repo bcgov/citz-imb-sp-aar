@@ -7,6 +7,13 @@ const pool = require('./db')
 app.use(cors());
 app.use(express.json());
 
+const corsOptions = {
+	origin: 'http://front-end-pern-stack.apps-crc.testing',
+	optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
+
+
 //ROUTES//
 
 //create a todo
@@ -24,11 +31,11 @@ app.post('/todos', async (req, res) => {
 
 //get all todos
 
-app.get('/todos', async (req, res) => {
+app.get('/todos', cors(corsOptions), async (req, res) => {
 	console.log('getting todos...')
 	try {
 		const allTodos = await pool.query('SELECT * FROM todo')
-
+		console.log(`res`, res)
 		res.json(allTodos.rows)
 	} catch (error) {
 		console.error(error.message)
@@ -36,7 +43,7 @@ app.get('/todos', async (req, res) => {
 })
 
 //get a todo
-app.get('/todos/:id', async (req, res) => {
+app.get('/todos/:id',cors(corsOptions), async (req, res) => {
 	try {
 		const { id } = req.params
 		const todo = await pool.query('SELECT * FROM todo WHERE todo_id=$1', [id])
@@ -48,7 +55,7 @@ app.get('/todos/:id', async (req, res) => {
 })
 
 //update a todo
-app.put('/todos/:id', async (req, res) => {
+app.put('/todos/:id',cors(corsOptions), async (req, res) => {
 	try {
 		const { id } = req.params
 		const { description } = req.body
@@ -62,7 +69,7 @@ app.put('/todos/:id', async (req, res) => {
 })
 
 //delete a todo
-app.delete('/todos/:id', async (req, res) => {
+app.delete('/todos/:id',cors(corsOptions), async (req, res) => {
 	try {
 		const { id } = req.params
 
