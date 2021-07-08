@@ -37,7 +37,8 @@ Client
 ### Release branches
  - git flow release start _0.1.0_
  - git flow release finish _0.1.0_
- looks like you have to change to main branch locally and sync with origin
+
+looks like you have to change to main branch locally and sync with origin
 ### Hotfix branches
  - git flow hotfix start _hotfix_branch_
  - git flow hotfix finish _hotfix_branch_
